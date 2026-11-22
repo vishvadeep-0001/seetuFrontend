@@ -14,6 +14,9 @@ import Carrer from "./components/Career.jsx";
 import Blog from "./components/Blog.jsx";
 import Resources from "./components/Resources.jsx";
 import Search from "./components/Search.jsx";
+import AdminDashboard from "./components/Admin/AdminDashboard.jsx";
+import AdminColleges from "./components/Admin/AdminColleges.jsx";
+import AdminStudent from "./components/Admin/AdminStudent.jsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -66,8 +69,22 @@ const appRouter = createBrowserRouter([
     path: "/newStudent",
     element: <AddStudent />,
   },
+
+  // Admin Routes
   {
-    path: "/newCollege",
+    path: "/admin",
+    element: <AdminDashboard />,
+  },
+  {
+    path: "/admin/adminStudent",
+    element: <AdminStudent />,
+  },
+  {
+    path: "/admin/colleges",
+    element: <AdminColleges />,
+  },
+  {
+    path: "/admin/addCollege",
     element: <AddCollege />,
   },
 ]);

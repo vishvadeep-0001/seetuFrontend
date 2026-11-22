@@ -1,5 +1,5 @@
 import { Flag, Landmark, MoveRight, Target, User } from "lucide-react";
-import slateboard from "../../assets/images/test.png";
+// import slateboard from "../../assets/images/test.png";
 import { Link } from "react-router-dom";
 
 const Journey = () => {
@@ -20,9 +20,7 @@ const Journey = () => {
               </button>
             </Link>
           </div>
-          <div>
-            <img src={slateboard} alt="test-image" />
-          </div>
+          <div>{/* <img src={slateboard} alt="test-image" /> */}</div>
         </div>
         <div className="">
           <div className="mb-3">

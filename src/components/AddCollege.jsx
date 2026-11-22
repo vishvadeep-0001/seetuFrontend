@@ -41,7 +41,9 @@ import {
   Award,
   X,
   CheckCircle2,
+  UserRound,
 } from "lucide-react";
+import AdminNavbar from "./Admin/AdminNavbar";
 
 const inputStyle =
   "w-full h-9 rounded border border-slate-200 bg-white px-3 text-xs text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-100";
@@ -326,20 +328,53 @@ export default function AddCollege() {
     });
   };
 
-  return (
-    <div className="min-h-screen bg-slate-50 text-slate-800">
-      {/* Sidebar */}
-      {sidebarOpen && (
-        <button
-          type="button"
-          aria-label="Close sidebar"
-          onClick={() => setSidebarOpen(false)}
-          className="fixed inset-0 z-30 bg-black/40 lg:hidden"
-        />
-      )}
+  function Header() {
+    return (
+      <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-4 md:px-7 sticky top-0 z-20">
+        <div className="flex items-center gap-4">
+          <button className="text-gray-600 lg:hidden">
+            <Menu size={22} />
+          </button>
 
-      {/* Main area */}
-      <div className="min-w-0 lg:ml-52">
+          <div className="hidden md:flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 w-64">
+            <Search size={17} className="text-gray-400" />
+            <input
+              type="text"
+              placeholder="Search anything..."
+              className="bg-transparent outline-none text-sm w-full"
+            />
+          </div>
+        </div>
+
+        <div className="flex items-center gap-4">
+          <button className="relative text-gray-500">
+            <Bell size={20} />
+            <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full" />
+          </button>
+
+          <div className="flex items-center gap-2 cursor-pointer">
+            <div className="w-9 h-9 rounded-full bg-blue-100 flex items-center justify-center text-blue-700">
+              <UserRound size={20} />
+            </div>
+
+            <div className="hidden sm:block">
+              <p className="text-sm font-semibold text-gray-800">Admin</p>
+              <p className="text-xs text-gray-500">Super Admin</p>
+            </div>
+
+            <ChevronDown size={16} className="text-gray-500" />
+          </div>
+        </div>
+      </header>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-[#f5f7fb]">
+      <AdminNavbar />
+      <div className="lg:ml-64">
+        <Header />
+        {/* <div className="min-w-0 lg:ml-52"> */}
         <main className="mx-auto max-w-[1600px] p-3 sm:p-5">
           {/* Page title */}
           <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
@@ -627,82 +662,6 @@ export default function AddCollege() {
                   </div>
                 </Section>
               </div>
-
-              {/* Right upload column */}
-              <aside className="space-y-2.5">
-                <Section
-                  title="College Logo"
-                  icon={ShieldCheck}
-                  color="bg-emerald-50 text-emerald-800"
-                >
-                  {logo ? (
-                    <div className="relative flex h-28 items-center justify-center rounded-md border border-slate-200 p-2">
-                      <img
-                        src={logo.url}
-                        alt="College logo"
-                        className="max-h-full max-w-full object-contain"
-                      />
-                      <button
-                        type="button"
-                        onClick={() => {
-                          URL.revokeObjectURL(logo.url);
-                          setLogo(null);
-                        }}
-                        className="absolute right-1 top-1 rounded bg-red-500 p-1 text-white"
-                        aria-label="Remove logo"
-                      >
-                        <Trash2 size={12} />
-                      </button>
-                    </div>
-                  ) : (
-                    <UploadBox
-                      title="Upload College Logo"
-                      icon={Upload}
-                      accept="image/png,image/jpeg"
-                      onFiles={handleLogo}
-                    />
-                  )}
-                </Section>
-
-                <Section
-                  title="College Images"
-                  icon={Image}
-                  color="bg-amber-50 text-amber-900"
-                >
-                  <UploadBox
-                    title="Upload College Images"
-                    icon={Image}
-                    multiple
-                    accept="image/png,image/jpeg"
-                    onFiles={handleImages}
-                  />
-
-                  {images.length > 0 && (
-                    <div className="mt-2 grid grid-cols-2 gap-2">
-                      {images.map((image) => (
-                        <div
-                          key={image.id}
-                          className="group relative h-20 overflow-hidden rounded border border-slate-200"
-                        >
-                          <img
-                            src={image.url}
-                            alt="College"
-                            className="h-full w-full object-cover"
-                          />
-                          <button
-                            type="button"
-                            onClick={() => removeImage(image.id)}
-                            aria-label="Remove college image"
-                            className="absolute right-1 top-1 rounded bg-red-600 p-1 text-white opacity-100 sm:opacity-0 sm:group-hover:opacity-100"
-                          >
-                            <Trash2 size={12} />
-                          </button>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </Section>
-              </aside>
             </div>
 
             {/* Other Information */}
