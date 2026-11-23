@@ -119,7 +119,7 @@ const List = () => {
           <div className="flex justify-between">
             <h4 className="text-slate-900 font-bold">Top Colleges</h4>
             <Link
-              to="/exams"
+              to="/colleges"
               className="text-[#155dfc] flex items-center justify-center font-bold gap-2"
             >
               View All Colleges
