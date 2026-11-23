@@ -20,7 +20,7 @@ const menuItems = [
   { name: "Colleges", link: "/admin/colleges", icon: GraduationCap },
   { name: "Exams", link: "/admin/exams", icon: FileText },
   { name: "Rankings", link: "/admin/rankings", icon: Trophy },
-  { name: "Students", link: "/admin/students", icon: Users },
+  { name: "Students", link: "/admin/adminStudent", icon: Users },
   { name: "Advertisements", link: "/admin/advertisements", icon: Megaphone },
   { name: "Subscriptions", link: "/admin/subscription", icon: CreditCard },
   { name: "Counselling", link: "/admin/counselling", icon: UserRound },
